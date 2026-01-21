@@ -1,0 +1,77 @@
+services:
+  # --------------------
+  # Infrastructure
+  # --------------------
+  postgres:
+    image: postgres:15-alpine
+    container_name: traveller_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: traveller_db
+    volumes:
+      - ./infrastructure/data/postgres:/var/lib/postgresql/data
+    networks:
+      - traveller-network
+
+  mongo:
+    image: mongo:6.0
+    container_name: traveller_mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ./infrastructure/data/mongo:/data/db
+    networks:
+      - traveller-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: traveller_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./infrastructure/data/redis:/data
+    networks:
+      - traveller-network
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: traveller_qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - ./infrastructure/data/qdrant:/qdrant/storage
+    networks:
+      - traveller-network
+
+  # --------------------
+  # Application Services (Placeholders)
+  # --------------------
+  # backend:
+  #   build: ./packages/backend
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - postgres
+  #     - mongo
+  #     - redis
+  #   networks:
+  #     - traveller-network
+
+  # ai-engine:
+  #   build: ./packages/ai-engine
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - qdrant
+  #   networks:
+  #     - traveller-network
+
+networks:
+  traveller-network:
+    driver: bridge
