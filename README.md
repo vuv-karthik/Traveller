@@ -1,15 +1,18 @@
 # Traveller - Intelligent Travel Agent Platform
 
-[![Phase](https://img.shields.io/badge/Phase-1%20COMPLETE-success)](./docs/phase-1/PHASE_1_FROZEN.md)
-[![Status](https://img.shields.io/badge/Status-FROZEN-critical)](./docs/phase-1/PHASE_1_FROZEN.md)
+[![Phase 1](https://img.shields.io/badge/Phase%201-CLOSED-critical)](./docs/phase-1/PHASE_1_FROZEN.md)
+[![Phase 2](https://img.shields.io/badge/Phase%202-ACTIVE-success)](./docs/PHASE_2_KICKOFF_AUTHORIZATION.md)
+[![Governance](https://img.shields.io/badge/Governance-ENFORCED-blue)](./docs/PHASE_2_GOVERNANCE.md)
 
 ---
 
-## ⚠️ PHASE 1 CLOSED – Changes Require Phase 2 Approval
+## 🔒 Phase 1: CLOSED (Frozen) | 🚀 Phase 2: ACTIVE
 
-**Phase 1 has been officially frozen.** All backend modules (Auth, Trip Planning, Destination, Budget, AI Assistant) and frontend flows (Maps, UI/UX) are **READ-ONLY**.
+**Phase 1 has been officially frozen** as of 2026-01-27. All backend modules (Auth, Trip Planning, Destination, Budget, AI Assistant) and frontend flows (Maps, UI/UX) are **READ-ONLY**.
 
-**To propose changes**: Submit a Phase 2 Implementation Plan. See [`docs/phase-1/PHASE_1_FROZEN.md`](./docs/phase-1/PHASE_1_FROZEN.md) for details.
+**Phase 2 (Intelligence & Personalization) is now ACTIVE** under strict governance controls.
+
+⚠️ **CRITICAL**: Live LLM usage is governed and gated by [`PHASE_2_GOVERNANCE.md`](./docs/PHASE_2_GOVERNANCE.md). All external API integrations require explicit approval.
 
 ---
 
@@ -89,9 +92,43 @@ Full details: [`docs/tech_stack.md`](./docs/tech_stack.md)
 
 ---
 
-## Phase 1 Archive
-
 All Phase 1 documentation, verification scripts, and governance reports are archived in [`docs/phase-1/`](./docs/phase-1/).
+
+---
+
+## Phase Boundaries & Governance
+
+### 🔒 Phase 1 Modules: LOCKED (Read-Only)
+
+The following modules are **FROZEN** and cannot be modified without formal change request approval:
+
+- **Module 1**: Authentication & User Management
+- **Module 2**: Core Trip Planning (Mongoose persistence)
+- **Module 3**: Destination Information (with caching)
+- **Module 4**: Budget Estimation (deterministic, tier-based)
+- **Module 5**: AI Assistant (Mock mode baseline)
+- **Module 6**: Maps & Navigation (visualization-only)
+- **Module 7**: End-to-End UI/UX Flow (Flutter mobile)
+
+**Baseline Tag**: `phase-1-final` (commit: `9e4ee8e`)
+
+### 🚀 Phase 2 Modules: ACTIVE (Under Development)
+
+Phase 2 work is authorized and MUST occur in feature branches only:
+
+- **Primary Branch**: `feat/phase2-ai-assistant`
+- **Module 2.1**: Advanced AI Assistant (State-aware, Tool-calling)
+- **Module 2.2**: Recommendation Engine (Vector embeddings, Hidden Gems)
+- **Module 2.3**: Budget Optimization (Dynamic constraints)
+
+**Branch Rules**:
+- No direct commits to `main`
+- All Phase 2 work in `feat/*` branches
+- PR reviews required for merges
+- `main` remains stable until Phase 2 approval
+
+**Governance**: All Phase 2 features are subject to [`PHASE_2_GOVERNANCE.md`](./docs/PHASE_2_GOVERNANCE.md)
+
 
 ---
 
